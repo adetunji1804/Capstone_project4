@@ -10,8 +10,11 @@ class Visitor(Model):
     email = CharField()
         
 
+    def get_email(self):
+        return '{}.{}@email.com'.format(self.first_name, self.last_name)
+
     def __str__(self):
-        return f'Fullname: {self.first_name} {self.last_name}, email: {self.email} '
+        return f'Fullname: {self.first_name} {self.last_name}, email: {self.get_email()} '
 
     class Meta:
         database = db #model use the art_db.sqlite database
