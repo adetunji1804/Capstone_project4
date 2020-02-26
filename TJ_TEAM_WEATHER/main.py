@@ -11,13 +11,12 @@ def get_visitor_personal_info(first_name, last_name):
     #new_record = Visitor.insert(first_name = first_name, last_name = last_name).execute()
 
 
-
 db.connect() # established connection to datavase
 db.create_tables([Visitor, Visit_record]) #peewee auto generate tables
 
-visitor_obj=get_visitor_personal_info('fname', 'lname')
+#visitor_obj=get_visitor_personal_info('fname', 'lname')
 
 #check the all records on visitor table
-#for item in Visitor.select():
-    #print(item)
+for item in Visitor.select():
+    print(item)
 

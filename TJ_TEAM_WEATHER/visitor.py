@@ -33,3 +33,17 @@ class Visit_record(Model):
 
     class Meta:
         database = db #model use the art_db.sqlite database
+
+
+class Country_request:
+    country_input = CharField()
+    code_ext =CharField()
+    city = CharField()
+
+    def __init__(self, country_input, code_ext, city):
+        self.country_input = country_input
+        self.code_ext = code_ext
+        self.city = city
+
+    def get_country_code_info(self):
+        return '{} {},{}'.format(self.city, self.country_input, self.code_ext)
