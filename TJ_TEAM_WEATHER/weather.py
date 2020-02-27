@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 
 
+
 ''' 
 function to get country extension code. 
 consume API with list of countries and corresponding codes
@@ -48,11 +49,12 @@ while check:
         for forecast in forecast_items: #iterate through received data
             timestamp = forecast['dt']
             date = datetime.fromtimestamp(timestamp) # Unix timestamp
+            dateFormated = date.strftime("%b %d %Y %H:%M") #strftime for date formatting-CR
             temp = forecast['main']['temp']
             #display date and temprature of specified city
            
-            print(f'At {date} \t- Temp is {temp}')
+            print(f'| At {dateFormated} - Temp is {temp:.1f}°F | \n----------------------------------------') 
             check = False #terminate process
     else:
-        print('Not found! Either the country or city is wrongly spelt')
+        print(f'{city_country_extension} Not found! \n Either the country or city is wrongly spelt')
     print('\n')
