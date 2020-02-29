@@ -14,6 +14,6 @@ def Currency_API(country):
     reponse = requests.get('https://api.exchangeratesapi.io/latest?base=USD')
     business_data = reponse.json()
     country_exchange_rate = (business_data['rates'][country_currency])
-    print(f' $1.00 USD is equal to  : {country_exchange_rate} {country_currency}')
+    return(f' {country_exchange_rate} {country_currency}'.format(country_exchange_rate, country_currency))
 
 
