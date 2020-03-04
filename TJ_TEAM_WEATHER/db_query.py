@@ -29,9 +29,6 @@ weather_table = """CREATE TABLE IF NOT EXISTS weather(
                 fc_id INTEGER
                 ) """
 
-#chk_tbl1 = 'SELECT name FROM sqlite_master WHERE type= "table" AND name="visitor" '
-#chk_tbl2 = 'SELECT name FROM sqlite_master WHERE type="table" AND name="visit_record" '
-#chk_tbl3 = 'SELECT name FROM sqlite_master WHERE type="table" AND name="weather" '
 
 obj_visitor = """INSERT INTO visitor (first_name, last_name, enquiry_date) 
                  VALUES (?, ?, ?) """
@@ -42,7 +39,7 @@ def db_connection(db_file):
     conn = None  # set connection to none
     try:
         conn = sqlite3.connect(db_file)  # create database connection
-        # conn.execute('PRAGMA foreign_keys = ON') # enforce foreign key policy
+        conn.execute('PRAGMA foreign_keys = ON') # enforce foreign key policy
         return conn
     except:
         return "connection not established!"
@@ -68,11 +65,6 @@ def create_tables():
         for table in tables:
             exec = conn.execute(table)
         return exec.rowcount
-        #cursor = conn.cursor()
-        #tbl1 = cursor.execute(chk_tbl1)
-        #tbl2 = cursor.execute(chk_tbl2)
-        #tbl3 = cursor.execute(chk_tbl3)
-        #if tbl1 == 1 and tbl2 == 1 and tbl3 == 1:
             
 
 

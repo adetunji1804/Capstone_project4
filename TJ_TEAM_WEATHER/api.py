@@ -8,6 +8,8 @@ from visitor_class import *
     and the weather forecast for the user choice of city in specified country
 """
 
+api_key = os.environ.get("WEATHER_KEY")
+
 
 def get_country_and_code():
     # API url for list of countries and code's
@@ -36,11 +38,11 @@ def verify_country_and_city(country, code, city):
                 name = country_code_list[i]["Name"]  # country name found
                 break
     except:
-        return 'Error! country not found'
+        return "Error! country not found"
     # return an object of Country_request class
     obj_country = Country_request(name, code, city)
     return obj_country
-    
+
 
 def weather_details():
     try:
@@ -52,7 +54,7 @@ def weather_details():
         query = {
             "q": user_city,
             "units": "imperial",
-            "appid": "141312562055da1f2e747a4441ac1e17",
+            "appid": api_key,
         }  # url query created
         url = "http://api.openweathermap.org/data/2.5/forecast"
 
